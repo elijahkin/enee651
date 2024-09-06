@@ -1,4 +1,3 @@
 Input_size      Small       Medium      Large       X-large
-matvec.s.c
-matvec.p.c
-
+matvec.s.c      7661        48510       1147737     3620738
+matvec.p.c      1912        4044        66638       215059

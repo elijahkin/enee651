@@ -1,6 +1,9 @@
 The below pseudocode performs the desired sparse matrix, dense vector multiplication; for each row in the matrix, we perform the dot product of the non-zero elements of that row, and the corresponding elements of the vector, before writing this value to the result.
 
 for row in range(m):
-  result[row] = 0
+  dot = 0
   for entry in range(rowptr[row], rowptr[row + 1]):
-    result[row] += values[entry] * vector[col_ind[entry]]
+    dot += values[entry] * vector[col_ind[entry]]
+  result[row] = dot
+
+The outer for loop will execute m times (where m is the number of rows of the matrix). For each row, the inner for loop will execute as many times as the number of nonzero elements in that row; in the worst case, all n elements are nonzero. Hence, the work complexity is O(m * n). Since this is a serial algorithm, the time complexity will be the same, O(m * n).

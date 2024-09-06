@@ -1,0 +1,3 @@
+The parallel algorithm is identical, except that the outer for loop has been replaced by a spawn to create threads indexed from 0 to m - 1. The result is that the dot for each row of the matrix is handled by its own thread. The only other difference is replacing the 'row' variable with '$' to get the thread IDs.
+
+The work is the same as in the serial case, O(m * n). However, now each of the m dots are executing in parallel, so the time complexity for the parallel algorithm is O(n).
