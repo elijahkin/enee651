@@ -1,0 +1,6 @@
+The below pseudocode performs the desired sparse matrix, dense vector multiplication; for each row in the matrix, we perform the dot product of the non-zero elements of that row, and the corresponding elements of the vector, before writing this value to the result.
+
+for row in range(m):
+  result[row] = 0
+  for entry in range(rowptr[row], rowptr[row + 1]):
+    result[row] += values[entry] * vector[col_ind[entry]]
