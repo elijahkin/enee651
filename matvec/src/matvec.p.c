@@ -2,10 +2,11 @@
 
 int main() {
   spawn(0, m - 1) {
-    result[$] = 0;
+    int dot = 0;
     for (int entry = rowptr[$]; entry < rowptr[$ + 1]; ++entry) {
-      result[$] += values[entry] * vector[col_ind[entry]];
+      dot += values[entry] * vector[col_ind[entry]];
     }
+    result[$] = dot;
   }
 
 // DONT MODIFY THE REST

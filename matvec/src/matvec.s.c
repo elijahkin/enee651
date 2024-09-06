@@ -2,10 +2,11 @@
 
 int main() {
   for (int row = 0; row < m; ++row) {
-    result[row] = 0;
+    int dot = 0;
     for (int entry = rowptr[row]; entry < rowptr[row + 1]; ++entry) {
-      result[row] += values[entry] * vector[col_ind[entry]];
+      dot += values[entry] * vector[col_ind[entry]];
     }
+    result[row] = dot;
   }
 
 // DONT MODIFY THE REST
