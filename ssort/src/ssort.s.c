@@ -1,5 +1,5 @@
 void heapify(int A[], int n, int i) {
-  while (true) {
+  while (1) {
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
