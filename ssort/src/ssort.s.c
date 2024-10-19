@@ -7,64 +7,50 @@ void swap(int *a, int *b) {
 }
 
 void heapify(int A[], int n, int i) {
-  int largest = i;       // Initialize largest as root
-  int left = 2 * i + 1;  // left child
-  int right = 2 * i + 2; // right child
+  int largest = i;
+  int left = 2 * i + 1;
+  int right = 2 * i + 2;
 
-  // If left child is larger than root
   if (left < n && A[left] > A[largest]) {
     largest = left;
   }
-
-  // If right child is larger than largest so far
   if (right < n && A[right] > A[largest]) {
     largest = right;
   }
 
-  // If largest is not root
   if (largest != i) {
     swap(&A[i], &A[largest]);
-
-    // Recursively heapify the affected sub-tree
     heapify(A, n, largest);
   }
 }
 
-void heapSort(int A[], int n) {
-  // Build heap (rearrange array)
-  for (int i = n / 2 - 1; i >= 0; i--) {
+void heap_sort(int A[], int n) {
+  // Build the heap
+  for (int i = n / 2 - 1; i >= 0; --i) {
     heapify(A, n, i);
   }
 
   // One by one extract elements from heap
-  for (int i = n - 1; i > 0; i--) {
-    // Move current root to end
+  for (int i = n - 1; i > 0; --i) {
     swap(&A[0], &A[i]);
-
-    // Call max heapify on the reduced heap
     heapify(A, i, 0);
   }
 }
 
-// Function to print the array
-void printArray(int A[], int n) {
-  for (int i = 0; i < n; i++) {
-    printf("%d ", A[i]);
-  }
-  printf("\n");
-}
-
 int main() {
+  // TODO Eventually remove since these come from the data
   int A[] = {12, 11, 13, 5, 6, 7};
-  int n = sizeof(A) / sizeof(A[0]);
+  int N = sizeof(A) / sizeof(A[0]);
+  int result[N];
 
-  printf("Original array: \n");
-  printArray(A, n);
+  // Copy the unsorted array A into result
+  for (int i = 0; i < N; ++i) {
+    result[i] = A[i];
+  }
 
-  heapSort(A, n);
+  // Sort result
+  heap_sort(result, N);
 
-  printf("Sorted array: \n");
-  printArray(A, n);
-
+  // TODO Check that result is correctly sorted
   return 0;
 }
