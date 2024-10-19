@@ -1,5 +1,5 @@
 // #include <assert.h>
-#include <stdio.h>
+// #include <stdio.h>
 
 // const int N = 6;
 // int A[] = {12, 11, 13, 5, 6, 7};
