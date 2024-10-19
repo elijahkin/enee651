@@ -1,16 +1,9 @@
 #include <assert.h>
 #include <stdio.h>
 
-// TODO Eventually remove since these come from the data
-const int N = 6;
-int A[] = {12, 11, 13, 5, 6, 7};
-int result[N];
-
-void swap(int *a, int *b) {
-  int temp = *a;
-  *a = *b;
-  *b = temp;
-}
+// const int N = 6;
+// int A[] = {12, 11, 13, 5, 6, 7};
+// int result[N];
 
 void heapify(int A[], int n, int i) {
   int largest = i;
@@ -25,7 +18,9 @@ void heapify(int A[], int n, int i) {
   }
 
   if (largest != i) {
-    swap(&A[i], &A[largest]);
+    int temp = A[i];
+    A[i] = A[largest];
+    A[largest] = temp;
     heapify(A, n, largest);
   }
 }
@@ -38,7 +33,9 @@ void heap_sort(int A[], int n) {
 
   // One by one extract elements from heap
   for (int i = n - 1; i > 0; --i) {
-    swap(&A[0], &A[i]);
+    int temp = A[0];
+    A[0] = A[i];
+    A[i] = temp;
     heapify(A, i, 0);
   }
 }
@@ -54,7 +51,7 @@ int main() {
 
   // Verify that result is correctly sorted
   for (int i = 1; i < N; ++i) {
-    assert(result[i] > result[i - 1]);
+    assert(result[i] >= result[i - 1]);
   }
   return 0;
 }
